@@ -1,5 +1,3 @@
 def add(numsString):
-    if numsString == "":
-        return 0
-    nums = numsString.split(",")
+    nums = numsString.replace(",", " ").replace("\n", " ").split()      #replace "," and "\n" with " " and then split
     return sum(map(int, nums))
