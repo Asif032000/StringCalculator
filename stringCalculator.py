@@ -4,9 +4,12 @@ def add(numsString):
     match = re.match('^//.*\s', numsString)
     
     if match:
-        delimiter = numsString[match.start()+2 :match.end()-1 ] #parse dynamic delimiter
-        numsString = numsString[match.end():]
-        numsString = numsString.replace(delimiter, ",")
+        # all delimiters string
+        delimitersString = numsString[match.start()+2 :match.end()-1 ] #parse dynamic delimiter
+        allMatches = re.findall(r'\[(.*?)\]', delimitersString)
+        numsString = numsString[match.end():]       # numbers string to work upon
+        for delimiter in allMatches:
+            numsString = numsString.replace(delimiter, ",")     # replace all delimiters with ","
     nums = numsString.replace(",", " ").replace("\n", " ").split()      #replace "," and "\n" with " " and then split
     numsInt = list(map(int, nums))
 
