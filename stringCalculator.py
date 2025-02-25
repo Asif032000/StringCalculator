@@ -15,4 +15,6 @@ def add(numsString):
     if len(negativeNumbers) > 0:
         errorMessage = 'negative numbers not allowed ' + (",").join(negativeNumbers)
         raise ValueError(errorMessage)
+    #ignore numbers greater than 1000
+    numsInt = filter(lambda x:x<1001, numsInt)
     return sum(numsInt)
